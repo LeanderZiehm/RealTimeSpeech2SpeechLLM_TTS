@@ -34,10 +34,14 @@ A Python-based chatbot that listens to speech, transcribes it to text, generates
 
 
 USING:
-Piper
-https://github.com/rhasspy/piper
+
+Ollama
+https://ollama.com/download
 
 Whisper Mic
+https://github.com/mallorbc/whisper_mic
+
+Piper
 https://github.com/rhasspy/piper
 
 ffplay 
