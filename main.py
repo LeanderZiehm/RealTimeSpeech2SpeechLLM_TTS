@@ -6,9 +6,14 @@ import uuid
 from whisper_mic import WhisperMic
 import ollama
 
-ABS = r"C:\\Users\\student\\Desktop\\TTS\\piper\\"
-model_path = ABS + 'en_US-hfc_male-medium.onnx'
-output_dir = ABS + 'output_audio_files'
+
+toolPath = r"tools\\"
+ffmplayPath = toolPath+"ffplay"
+
+piperDir = toolPath+"piper\\"
+piperExe = piperDir+"piper.exe"
+model_path = piperDir + 'en_US-hfc_male-medium.onnx'
+output_dir = 'output_audio_files'
 os.makedirs(output_dir, exist_ok=True)
 
 mic = WhisperMic(model="tiny", english=True, energy=400,pause=0.5)#implementation="faster_whisper",
@@ -46,9 +51,9 @@ def speak_with_piper(text):
         # sentence = sentence.replace('"', '').replace("'", "")
         output_file = os.path.join(execution_folder, f'sentence_{idx + 1}.wav')
         
-        subprocess.run(f'echo "{sentence}" | piper --model {model_path} --output_file {output_file}', shell=True)
+        subprocess.run(f'echo "{sentence}" | {piperExe} --model {model_path} --output_file {output_file}', shell=True)
         
-        os.system(f"ffplay -nodisp -autoexit {output_file}")
+        os.system(f"{ffmplayPath} -nodisp -autoexit {output_file}")
 
 while True:
     
