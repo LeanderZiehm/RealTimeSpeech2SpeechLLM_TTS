@@ -1,0 +1,6 @@
+whisper_mic
+ollama
+uuid
+re
+subprocess
+time
